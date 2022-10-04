@@ -1,0 +1,104 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.clock {
+  width: 100%;
+  height: 100vh;
+  background-color: #FCFFF5;
+  position: realtive;
+  top: 0px;
+}
+
+.day {
+  width: 100%;
+  height: 100%;
+  background-color: #D1DBBD;
+  position: absolute;
+  top: 0px;
+}
+
+.hour {
+  width: 0%;
+  height: 100%;
+  background-color: #91AA9D;
+  position: absolute;
+  top: 0px;
+  overflow: hidden;
+}
+
+.minute {
+  width: 0%;
+  height: 100%;
+  background-color: #3E606F;
+  position: absolute;
+  top: 0px;
+  mix-blend-mode: hard-light;
+  overflow: hidden;
+}
+
+.second {
+  width: 0%;
+  height: 100%;
+  background-color: #193441;
+  position: absolute;
+  top: 0px;
+  opacity: 1;
+  mix-blend-mode: hard-light;
+  overflow: hidden;
+}
+
+.second > p {
+  color: #3E606F;
+  mix-blend-mode: lighten;
+  top: 80px;
+}
+
+.hour > p {
+  color: #D1DBBD;
+  top: -40px;
+}
+
+.minute > p {
+  color: #91AA9D;
+  mix-blend-mode: lighten;
+  top: 20px;
+}
+
+.second > h2 {
+  color: #3E606F;
+  top: 160px;
+}
+
+.hour > h2 {
+  color: #D1DBBD;
+  top: 40px;
+}
+
+.minute > h2 {
+  color: #91AA9D;
+  top: 100px;
+}
+
+.clock p {
+  font-family: "Montserrat";
+  font-size: 3em;
+  opacity: 1;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  margin-top: 31px;
+}
+
+.clock h2 {
+  font-family: "Montserrat";
+  font-size: 1em;
+  opacity: 1;
+  position: absolute;
+  margin-top: -5px;
+  width: 100%;
+  right: 2px;
+  text-align: right;
+}
