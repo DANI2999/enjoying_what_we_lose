@@ -1,25 +1,56 @@
-function date_time(id)
-{
-        date = new Date;
-        h = date.getHours();
-        if(h<10)
-        {
-                h = "0"+h;
-        }
-        m = date.getMinutes();
-        if(m<10)
-        {
-                m = "0"+m;
-        }
-        s = date.getSeconds();
-        if(s<10)
-        {
-                s = "0"+s;
-        }
-        document.getElementById("s").innerHTML = ''+s;
-        document.getElementById("m").innerHTML = ''+m;
-        document.getElementById("h").innerHTML = ''+h;
-        setTimeout('date_time("'+"s"+'");','1000');
-        return true;
-}
-window.onload = date_time('s');
+// Add day, date, and time functionality
+
+// Get current date
+var today = new Date();
+var day = today.getDate();
+var out = document.getElementById("date");
+out.innerHTML = day;
+
+// Time
+$(document).ready(function() {
+	setInterval(function(){
+		getTime();
+	}, 50);
+	function getTime() {
+		var d = new Date();
+		var s = d.getSeconds() + (d.getMilliseconds()/1000);
+		var m = d.getMinutes();
+		var h = hour12();	
+		$(".hand-sec").css("transform", "rotateZ(" + s*6 + "deg)");
+   
+    $(".hand-min").css("transform", "rotateZ(" + (m*6+s*0.1) + "deg)");
+		$(".hand-hour").css("transform", "rotateZ(" + (h*30 + m*0.5) + "deg)");
+		function hour12() {
+			var hour = d.getHours();
+			if(hour >= 12) {
+				hour = hour-12;
+			}
+			if(hour == 0) {
+				h = 12;
+			}
+			return hour;
+		}
+	}
+  
+  
+  const ROTATE_DELTA = 51.42857 /* 360 / 7 */
+  const getRotateFactor = day => day * ROTATE_DELTA
+  const rotate = el => 
+  el.style.transform = `rotate(-${getRotateFactor(day)}deg)`
+  let day = (new Date()).getDay()
+  const updateDay = e => {
+    day += 1
+    rotate(e.target)
+  }
+  const dayWrapper = document.querySelector('.day-wrapper')
+  rotate(dayWrapper)
+
+  setTimeout(() => {
+    const lastDay = day
+    day = (new Date()).getDay()
+    if (day !== lastDay) {
+      day += 1
+      rotate(dayWrapper)
+    }
+  }, 1000)
+});
